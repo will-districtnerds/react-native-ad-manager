@@ -202,7 +202,7 @@ public class RNAdManagerBannerViewManager extends ViewGroupManager<BannerAdView>
                 return AdSize.MEDIUM_RECTANGLE;
             case "fullBanner":
                 return AdSize.FULL_BANNER;
-            case "leaderBoard":
+            case "leaderboard":
                 return AdSize.LEADERBOARD;
             case "smartBannerPortrait":
                 return AdSize.SMART_BANNER;
@@ -214,6 +214,8 @@ public class RNAdManagerBannerViewManager extends ViewGroupManager<BannerAdView>
                 return new AdSize(300, 600);
             case "300x250":
                 return new AdSize(300, 250);
+            case "fluid":
+                return AdSize.FLUID;
             default:
                 return AdSize.BANNER;
         }

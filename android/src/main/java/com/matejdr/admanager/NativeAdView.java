@@ -21,9 +21,12 @@ import com.facebook.react.views.view.ReactViewGroup;
 import com.google.ads.mediation.admob.AdMobAdapter;
 import com.google.ads.mediation.facebook.FacebookExtras;
 import com.google.ads.mediation.facebook.FacebookAdapter;
+import com.google.android.gms.ads.AdError;
 import com.google.android.gms.ads.AdListener;
 import com.google.android.gms.ads.AdLoader;
 import com.google.android.gms.ads.AdSize;
+import com.google.android.gms.ads.LoadAdError;
+import com.google.android.gms.ads.ResponseInfo;
 import com.google.android.gms.ads.VideoOptions;
 import com.google.android.gms.ads.doubleclick.AppEventListener;
 import com.google.android.gms.ads.doubleclick.PublisherAdRequest;
@@ -191,8 +194,56 @@ public class NativeAdView extends ReactViewGroup implements AppEventListener,
             }
 
             @Override
+            public void onAdFailedToLoad(LoadAdError var1) {
+                String errorMessage = "Unknown error";
+
+                // Gets the domain from which the error came.
+                String errorDomain = var1.getDomain();
+                // Gets the error code. See
+                // https://developers.google.com/android/reference/com/google/android/gms/ads/AdRequest#constant-summary
+                // for a list of possible codes.
+                int errorCode = var1.getCode();
+                // Gets an error message.
+                errorMessage = var1.getMessage();
+                // Gets additional response information about the request. See
+                // https://developers.google.com/admob/android/response-info for more
+                // information.
+                ResponseInfo responseInfo = var1.getResponseInfo();
+                // Gets the cause of the error, if available.
+                AdError cause = var1.getCause();
+                // All of this information is available via the error's toString() method.
+                Log.d("Ads", var1.toString());
+/*
+                switch (errorCode) {
+                    case PublisherAdRequest.ERROR_CODE_INTERNAL_ERROR:
+                        errorMessage = "Internal error, an invalid response was received from the ad server.";
+                        break;
+                    case PublisherAdRequest.ERROR_CODE_INVALID_REQUEST:
+                        errorMessage = "Invalid ad request, possibly an incorrect ad unit ID was given.";
+                        break;
+                    case PublisherAdRequest.ERROR_CODE_NETWORK_ERROR:
+                        errorMessage = "The ad request was unsuccessful due to network connectivity.";
+                        break;
+                    case PublisherAdRequest.ERROR_CODE_NO_FILL:
+                        errorMessage = "The ad request was successful, but no ad was returned due to lack of ad inventory.";
+                        break;
+                }
+                WritableMap event = Arguments.createMap();
+                WritableMap error = Arguments.createMap();
+                error.putString("message", errorMessage);
+                event.putMap("error", error);
+                sendEvent(RNAdManagerBannerViewManager.EVENT_AD_FAILED_TO_LOAD, event);
+ */
+                WritableMap event = Arguments.createMap();
+                WritableMap error = Arguments.createMap();
+                error.putString("message", errorMessage);
+                event.putMap("error", error);
+                sendEvent(RNAdManagerBannerViewManager.EVENT_AD_FAILED_TO_LOAD, event);
+            }
+
+            @Override
             public void onAdLoaded() {
-                // sendEvent(RNAdManagerNativeViewManager.EVENT_AD_LOADED, null);
+                sendEvent(RNAdManagerNativeViewManager.EVENT_AD_LOADED, null);
             }
 
             @Override
