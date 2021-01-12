@@ -125,27 +125,6 @@ class BannerAdView extends ReactViewGroup implements AppEventListener, Lifecycle
                 AdError cause = var1.getCause();
                 // All of this information is available via the error's toString() method.
                 Log.d("Ads", var1.toString());
-/*
-                switch (errorCode) {
-                    case PublisherAdRequest.ERROR_CODE_INTERNAL_ERROR:
-                        errorMessage = "Internal error, an invalid response was received from the ad server.";
-                        break;
-                    case PublisherAdRequest.ERROR_CODE_INVALID_REQUEST:
-                        errorMessage = "Invalid ad request, possibly an incorrect ad unit ID was given.";
-                        break;
-                    case PublisherAdRequest.ERROR_CODE_NETWORK_ERROR:
-                        errorMessage = "The ad request was unsuccessful due to network connectivity.";
-                        break;
-                    case PublisherAdRequest.ERROR_CODE_NO_FILL:
-                        errorMessage = "The ad request was successful, but no ad was returned due to lack of ad inventory.";
-                        break;
-                }
-                WritableMap event = Arguments.createMap();
-                WritableMap error = Arguments.createMap();
-                error.putString("message", errorMessage);
-                event.putMap("error", error);
-                sendEvent(RNAdManagerBannerViewManager.EVENT_AD_FAILED_TO_LOAD, event);
- */
                 WritableMap event = Arguments.createMap();
                 WritableMap error = Arguments.createMap();
                 error.putString("message", errorMessage);
