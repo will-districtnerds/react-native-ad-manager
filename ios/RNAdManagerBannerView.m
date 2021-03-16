@@ -27,6 +27,7 @@
 - (void)setAdUnitID:(NSString *)adUnitID
 {
   _adUnitID = adUnitID;
+    NSLog(@"RNAdManagerBannerView setAdUnitID adUnitID %@", adUnitID);
 //  [self createViewIfCan];
 }
 
