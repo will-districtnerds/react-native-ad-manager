@@ -3,6 +3,7 @@ package com.matejdr.admanager;
 import androidx.annotation.Nullable;
 
 import android.location.Location;
+import android.util.Log;
 import android.view.View;
 
 import com.facebook.react.bridge.ReadableArray;
@@ -193,6 +194,7 @@ public class RNAdManagerBannerViewManager extends ViewGroupManager<BannerAdView>
 
 
     private AdSize getAdSizeFromString(String adSize) {
+        Log.i("ReactNative", "My log here!!!");
         switch (adSize) {
             case "banner":
                 return AdSize.BANNER;

@@ -7,6 +7,7 @@ export default class NativeAdsManager {
     // Indicates whether AdsManager is ready to serve ads
     this.isValid = true;
     this.adUnitID = adUnitID;
+    console.log("NativeAdsManager adUnitID: "+adUnitID);
     CTKAdManageNativeManager.init(adUnitID, testDevices);
   }
 
