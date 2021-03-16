@@ -194,7 +194,7 @@ public class RNAdManagerBannerViewManager extends ViewGroupManager<BannerAdView>
 
 
     private AdSize getAdSizeFromString(String adSize) {
-        Log.i("ReactNative", "My log here!!!");
+        Log.i("Ads", "getAdSizeFromString adSize: "+adSize);
         switch (adSize) {
             case "banner":
                 return AdSize.BANNER;

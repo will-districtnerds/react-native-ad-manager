@@ -66,11 +66,15 @@ class BannerAdView extends ReactViewGroup implements AppEventListener, Lifecycle
             @Override
             public void onAdLoaded() {
                 AdSize adSize = adView.getAdSize();
-                Log.d("Ads", "adSize: "+adSize);
+                Log.d("Ads", "onAdLoaded adSize: "+adSize);
                 int width = adView.getAdSize().getWidthInPixels(context);
                 int height = adView.getAdSize().getHeightInPixels(context);
                 int left = adView.getLeft();
                 int top = adView.getTop();
+                Log.d("Ads", "onAdLoaded width: "+width);
+                Log.d("Ads", "onAdLoaded height: "+height);
+                Log.d("Ads", "onAdLoaded left: "+left);
+                Log.d("Ads", "onAdLoaded top: "+top);
                 adView.measure(width, height);
                 adView.layout(left, top, left + width, top + height);
                 sendOnSizeChangeEvent();
@@ -78,6 +82,7 @@ class BannerAdView extends ReactViewGroup implements AppEventListener, Lifecycle
                 ad.putString("type", "banner");
                 ad.putString("gadSize", adView.getAdSize().toString());
                 adView.setVisibility(View.VISIBLE);
+                Log.d("Ads", "onAdLoaded ad: "+ad.toString());
                 sendEvent(RNAdManagerBannerViewManager.EVENT_AD_LOADED, ad);
             }
 
@@ -102,6 +107,7 @@ class BannerAdView extends ReactViewGroup implements AppEventListener, Lifecycle
                 WritableMap error = Arguments.createMap();
                 error.putString("message", errorMessage);
                 event.putMap("error", error);
+                Log.d("Ads", "onAdFailedToLoad event: "+event.toString());
                 sendEvent(RNAdManagerBannerViewManager.EVENT_AD_FAILED_TO_LOAD, event);
             }
 
@@ -124,11 +130,12 @@ class BannerAdView extends ReactViewGroup implements AppEventListener, Lifecycle
                 // Gets the cause of the error, if available.
                 AdError cause = var1.getCause();
                 // All of this information is available via the error's toString() method.
-                Log.d("Ads", var1.toString());
+                Log.d("Ads", "onAdFailedToLoad var1: "+var1.toString());
                 WritableMap event = Arguments.createMap();
                 WritableMap error = Arguments.createMap();
                 error.putString("message", errorMessage);
                 event.putMap("error", error);
+                Log.d("Ads", "onAdFailedToLoad event: "+event.toString());
                 sendEvent(RNAdManagerBannerViewManager.EVENT_AD_FAILED_TO_LOAD, event);
             }
 
