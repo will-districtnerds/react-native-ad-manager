@@ -221,7 +221,7 @@ class BannerAdView extends ReactViewGroup implements AppEventListener, Lifecycle
         List<String> testDeviceIds = Arrays.asList("B3EEABB8EE11C2BE770B684D95219ECB");
         RequestConfiguration configuration =
                 new RequestConfiguration.Builder().setTestDeviceIds(testDeviceIds).build();
-        MobileAds.setRequestConfiguration(configuration);
+//        MobileAds.setRequestConfiguration(configuration);
 /*
         PublisherAdRequest.Builder adRequestBuilder = new PublisherAdRequest.Builder();
         if (testDevices != null) {
