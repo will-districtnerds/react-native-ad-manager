@@ -5,6 +5,8 @@
 + (GADAdSize)GADAdSize:(id)json
 {
     NSString *adSize = [self NSString:json];
+    NSLog(@"adSize %@", adSize);
+
     if ([adSize isEqualToString:@"banner"]) {
         return kGADAdSizeBanner;
     } else if ([adSize isEqualToString:@"fullBanner"]) {
