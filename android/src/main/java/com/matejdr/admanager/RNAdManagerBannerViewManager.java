@@ -60,10 +60,10 @@ public class RNAdManagerBannerViewManager extends ViewGroupManager<BannerAdView>
 
     @Override
     public void onDropViewInstance(BannerAdView view) {
-        if (view.adView != null) {
-            view.adView.setAppEventListener(null);
-            view.adView.setAdListener(null);
-            view.adView.destroy();
+        if (view.adManagerView != null) {
+            view.adManagerView.setAppEventListener(null);
+            view.adManagerView.setAdListener(null);
+            view.adManagerView.destroy();
         }
         super.onDropViewInstance(view);
     }
