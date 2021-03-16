@@ -42,6 +42,7 @@
     __block NSMutableArray *validAdSizes = [[NSMutableArray alloc] initWithCapacity:adSizes.count];
     [adSizes enumerateObjectsUsingBlock:^(id jsonValue, NSUInteger idx, __unused BOOL *stop) {
         GADAdSize adSize = [RCTConvert GADAdSize:jsonValue];
+        NSLog(@"RNAdManagerBannerView setValidAdSizes GADAdSize %@", jsonValue);
         if (GADAdSizeEqualToSize(adSize, kGADAdSizeInvalid)) {
             RCTLogWarn(@"Invalid adSize %@", jsonValue);
         } else {
@@ -76,6 +77,7 @@
     }
 
     GADAdSize adSize = [RCTConvert GADAdSize:_adSize];
+    NSLog(@"RNAdManagerBannerView createViewIfCan _adSize %@", _adSize);
     DFPBannerView *bannerView;
     if (!GADAdSizeEqualToSize(adSize, kGADAdSizeInvalid)) {
 //        self.bannerView.adSize = adSize;

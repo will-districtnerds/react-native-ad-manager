@@ -204,11 +204,13 @@ class BannerAdView extends ReactViewGroup implements AppEventListener, Lifecycle
         if (this.validAdSizes != null) {
             for (int i = 0; i < this.validAdSizes.length; i++) {
                 adSizes.add(this.validAdSizes[i]);
+                Log.d("Ads", "loadBanner this.validAdSizes[i]: "+this.validAdSizes[i]);
             }
         }
 
         if (adSizes.size() == 0) {
             adSizes.add(AdSize.BANNER);
+            Log.d("Ads", "loadBanner adSizes empty so adding AdSize.BANNER");
         }
 
         AdSize[] adSizesArray = adSizes.toArray(new AdSize[adSizes.size()]);
@@ -252,6 +254,7 @@ class BannerAdView extends ReactViewGroup implements AppEventListener, Lifecycle
                         if (customTargeting[i].value != null && !customTargeting[i].value.isEmpty()) {
 //                            adRequestBuilder.addCustomTargeting(key, customTargeting[i].value);
                             adManagerRequestBuilder.addCustomTargeting(key, customTargeting[i].value);
+                            Log.d("Ads", "loadBanner customTargeting customTargeting[i].value: "+customTargeting[i].value);
                         } else if (customTargeting[i].values != null && !customTargeting[i].values.isEmpty()) {
 //                            adRequestBuilder.addCustomTargeting(key, customTargeting[i].values);
                             adManagerRequestBuilder.addCustomTargeting(key, customTargeting[i].values);
@@ -274,6 +277,7 @@ class BannerAdView extends ReactViewGroup implements AppEventListener, Lifecycle
                     if (!keyword.isEmpty()) {
 //                        adRequestBuilder.addKeyword(keyword);
                         adManagerRequestBuilder.addKeyword(keyword);
+                        Log.d("Ads", "loadBanner keywords keyword: "+keyword);
                     }
                 }
             }
